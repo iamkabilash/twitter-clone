@@ -1,6 +1,7 @@
 import useUserInfo from "@/hooks/useUserInfo";
 import { useState } from "react";
 import axios from "axios";
+import Avatar from "./Avatar";
 
 function TweetForm({ onPost }) {
   const { userInfo, status } = useUserInfo();
@@ -23,9 +24,7 @@ function TweetForm({ onPost }) {
     <form onSubmit={(e) => handleTweetSubmit(e)} className="mx-5">
       <div className="flex">
         <div className="">
-          <div className="rounded-full overflow-hidden w-12 border-2 border-twitterBorder">
-            <img src={userInfo?.image} alt="avatar" />
-          </div>
+          <Avatar src={userInfo?.image} />
         </div>
         <div className="grow pl-2">
           <textarea

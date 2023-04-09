@@ -17,6 +17,16 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "GET") {
-    res.json(await Post.find().sort({ createdAt: -1 }).exec());
+    const { id } = req.query;
+    if (id) {
+      const post = await Post.findById(id).populate("author");
+      res.json({ post });
+    } else {
+      const posts = await Post.find()
+        .populate("author")
+        .sort({ createdAt: -1 })
+        .exec();
+      res.json(posts);
+    }
   }
 }

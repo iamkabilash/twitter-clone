@@ -1,3 +1,5 @@
+import Layout from "@/components/Layout";
+import TweetContent from "@/components/TweetContent";
 import TweetForm from "@/components/TweetForm";
 import UsernameForm from "@/components/UsernameForm";
 import useUserInfo from "@/hooks/useUserInfo";
@@ -27,7 +29,7 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-lg mx-auto border-l border-r border-twitterBorder min-h-sccreen">
+    <Layout>
       <h1 className="text-lg font-bold p-4">Home</h1>
       <TweetForm
         onPost={() => {
@@ -38,10 +40,10 @@ export default function Home() {
         {tweets.length > 0 &&
           tweets.map((tweet) => (
             <div className="border-t border-twitterBorder p-5">
-              {tweet.text}
+              <TweetContent tweet={tweet} />
             </div>
           ))}
       </div>
-    </div>
+    </Layout>
   );
 }
