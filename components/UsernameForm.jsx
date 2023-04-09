@@ -19,7 +19,7 @@ function UsernameForm() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(userInfo);
+    // console.log(userInfo);
     await fetch("/api/users", {
       method: "PUT",
       headers: {
