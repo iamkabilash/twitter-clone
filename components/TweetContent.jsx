@@ -3,7 +3,7 @@ import Avatar from "./Avatar";
 import Link from "next/link";
 import TweetButtons from "./TweetButtons";
 
-function TweetContent({ tweet, detailed = false }) {
+function TweetContent({ tweet, likedByMe, detailed = false }) {
   return (
     <>
       {!detailed && (
@@ -30,7 +30,11 @@ function TweetContent({ tweet, detailed = false }) {
               {tweet.text}
             </Link>
             <br />
-            <TweetButtons />
+            <TweetButtons
+              id={tweet._id}
+              likesCount={tweet.likesCount}
+              likedByMe={likedByMe}
+            />
           </div>
           <br />
         </div>
@@ -60,7 +64,11 @@ function TweetContent({ tweet, detailed = false }) {
             )}
             <p>Twitter for Desktop</p>
           </div>
-          <TweetButtons />
+          <TweetButtons
+            id={tweet._id}
+            likesCount={tweet.likesCount}
+            likedByMe={likedByMe}
+          />
         </div>
       )}
     </>

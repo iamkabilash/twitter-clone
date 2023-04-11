@@ -9,7 +9,7 @@ export default async function handle(req, res) {
   const session = await getServerSession(req, res, authOptions);
 
   if (req.method === "GET") {
-    const id = req.query.id;
+    const id = req.query?.id;
     const user = await User.findById(id);
 
     res.json({ user });
